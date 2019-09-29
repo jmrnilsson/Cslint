@@ -1,9 +1,8 @@
-﻿using LineFeedLinter;
-using System;
+﻿using Cslint;
 using System.Text.RegularExpressions;
 using Xunit;
 
-namespace LineFeedLinterTests
+namespace CslintTests
 {
     public class GitProcessTests
     {
@@ -13,8 +12,8 @@ namespace LineFeedLinterTests
         public void TopLevelFound()
         {
             var actual = gitProcess.TopLevel();
-            Match match = Regex.Match(actual, "LineFeedLinter$");
-            Assert.Equal("LineFeedLinter", match.Value);
+            Match match = Regex.Match(actual, "[Cc]slint");
+            Assert.Contains("slint", match.Value);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace LineFeedLinter
+﻿namespace Cslint
 {
     public interface IChecker
     {

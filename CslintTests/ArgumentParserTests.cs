@@ -1,9 +1,9 @@
-﻿using LineFeedLinter;
+﻿using Cslint;
 using Shouldly;
 using System.IO;
 using Xunit;
 
-namespace LineFeedLinterTests
+namespace CslintTests
 {
     public class ArgsParserTests
     {

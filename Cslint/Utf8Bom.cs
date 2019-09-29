@@ -6,10 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace LineFeedLinter
+namespace Cslint
 {
-    public delegate void ApplicationInformation(string information);
-
     public class Utf8Bom : IChecker
     {
         public event ApplicationInformation Information;

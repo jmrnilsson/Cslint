@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LineFeedLinter\LineFeedLinter.csproj" />
+    <ProjectReference Include="..\Cslint\Cslint.csproj" />
   </ItemGroup>
 
 </Project>

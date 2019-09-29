@@ -1,19 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using System.Text.RegularExpressions;
 
-namespace LineFeedLinter
+namespace Cslint
 {
-    public class Lint : IChecker
+    public class Lint : CheckerBase, IChecker
     {
         IChecker lf = new Lf();
         IChecker utf8 = new Utf8Bom();
-
-        public event ApplicationInformation Information;
-        public event ApplicationInformation Error;
-        public event ApplicationInformation Verbose;
 
         public void Check(string workingDirectory)
         {
@@ -32,21 +27,6 @@ namespace LineFeedLinter
                 lf.Check(file);
                 utf8.Check(file);
             }
-        }
-
-        private void OnInformation(string information)
-        {
-            Information?.Invoke(information);
-        }
-
-        private void OnError(string information)
-        {
-            Error?.Invoke(information);
-        }
-
-        private void OnVerbose(string information)
-        {
-            Verbose?.Invoke(information);
         }
 
         private void GetCsFiles(string fullName, ref List<string> csFiles)

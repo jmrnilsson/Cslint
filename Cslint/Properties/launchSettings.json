@@ -2,7 +2,7 @@
   "profiles": {
     "LineFeedLinter": {
       "commandName": "Project",
-      "commandLineArgs": "check"
+      "commandLineArgs": "path=M:\\devwork\\TimeReporter"
     }
   }
 }
