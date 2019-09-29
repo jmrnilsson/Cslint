@@ -19,7 +19,7 @@ namespace Cslint
         /// Can be invoked with 'check' or 'poop' to exit with failure code. Path is assigned by 
         /// adding the switch path=C:\somedevelopment\somework.
         /// Example:
-        ///     - dotnet run poop  path=C:\somedevelopment\somework
+        ///     - dotnet run poop path=C:\somedevelopment\somework
         /// </summary>
         /// <param name="args"></param>
         public static void Main(string[] args)
