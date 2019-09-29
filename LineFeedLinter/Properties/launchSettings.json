@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "LineFeedLinter": {
+      "commandName": "Project",
+      "commandLineArgs": "check"
+    }
+  }
+}

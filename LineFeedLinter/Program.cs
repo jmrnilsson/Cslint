@@ -6,27 +6,31 @@ using System.Text.RegularExpressions;
 
 namespace LineFeedLinter
 {
-    class Program
+    public class Program
     {
+        static ArgsParser argsParser = new ArgsParser();
         static List<string> errors = new List<string>();
+        static Lint lint = new Lint();
+        static GitProcess gitProcess = new GitProcess();
 
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            var app = new LineFeedLinterApplication();
-            app.InformationAppended += WriteLine;
-            app.ErrorAppended += Error;
-            var path = new Lazy<string>(() => app.GitTopLevel());
-
-            //var mc = Regex.Match("path=(.*)+");
-            //mc.Captures[]
-
-            if (args.Contains("check") || args.Length < 1)
+            DirectoryInfo workingDirectory = null;
+            try
             {
-                app.Check(path.Value);  
+                argsParser.Parse(args);
             }
-            else if (args.Contains("fix"))
+            catch (ArgumentNullException)
             {
-                app.Replace(path.Value);
+                workingDirectory = new DirectoryInfo(gitProcess.TopLevel());
+            }
+
+            lint.Information += WriteLine;
+            lint.Error += Error;
+
+            if (args.Contains("check") || args.Contains("poop") || args.Length < 1)
+            {
+                lint.Check(workingDirectory.FullName);
             }
 
             if (args.Contains("poop") && errors.Any())
