@@ -17,6 +17,12 @@ Or if included in the repo as a binary or an agent that has the latest dotnet co
 
     dotnet run
 
+More complex use cases. Use regex to pipe out only errors. 
+
+	dotnet run path=..\..\someproject\ | Select-String -Pattern "^EE"
+	EE      No utf8 BOM: C:\sources\someproject\src\snark\Program.cs
+	EE      No utf8 BOM: C:\Humany\someproject\src\snark\Startup.cs
+	EE      Matches LF: C:\Humany\someproject\src\snark\ConfigStuffs.cs
 
 ## Building 
 
