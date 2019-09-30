@@ -4,36 +4,36 @@ using System.Text.RegularExpressions;
 
 namespace Cslint
 {
-    public class ArgsParser
-    {
-        public DirectoryInfo Parse(string[] kwargs)
-        {
-            DirectoryInfo workingDirectory = null;
-            
-            foreach (string kwarg in kwargs)
-            {
-                if (Regex.Match(kwarg, "^(poop|check)$").Success)
-                {
-                    continue;
-                }
+	public class ArgsParser
+	{
+		public DirectoryInfo Parse(string[] kwargs)
+		{
+			DirectoryInfo workingDirectory = null;
 
-                Match path = Regex.Match(kwarg, "(?<=(path=))(.*)+");
+			foreach (string kwarg in kwargs)
+			{
+				if (Regex.Match(kwarg, "^(poop|check)$").Success)
+				{
+					continue;
+				}
 
-                if (path.Success)
-                {
-                    if (!Directory.Exists(path.Value))
-                    {
-                        throw new ArgumentOutOfRangeException($"{path.Value} doesn't exist.");
-                    }
-                    workingDirectory = new DirectoryInfo(path.Value);
-                    continue;
-                }
+				Match path = Regex.Match(kwarg, "(?<=(path=))(.*)+");
 
-                throw new ArgumentException($"{kwarg} is an unrecognized argument");
-            }
+				if (path.Success)
+				{
+					if (!Directory.Exists(path.Value))
+					{
+						throw new ArgumentOutOfRangeException($"{path.Value} doesn't exist.");
+					}
+					workingDirectory = new DirectoryInfo(path.Value);
+					continue;
+				}
 
-            const string noWorkingDirectoryMessage = "No arguments assigned a working directory";
-            return workingDirectory ?? throw new ArgumentNullException(noWorkingDirectoryMessage);
-        }
-    }
+				throw new ArgumentException($"{kwarg} is an unrecognized argument");
+			}
+
+			const string noWorkingDirectoryMessage = "No arguments assigned a working directory";
+			return workingDirectory ?? throw new ArgumentNullException(noWorkingDirectoryMessage);
+		}
+	}
 }

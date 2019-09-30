@@ -1,11 +1,13 @@
-﻿namespace Cslint
-{
-    public interface IChecker
-    {
-        event ApplicationInformation Error;
-        event ApplicationInformation Information;
-        event ApplicationInformation Verbose;
+﻿using System.IO;
 
-        void Check(string path);
-    }
+namespace Cslint
+{
+	public interface IChecker
+	{
+		event ApplicationInformation Error;
+		event ApplicationInformation Information;
+		event ApplicationInformation Verbose;
+
+		void Check(string path);
+	}
 }
