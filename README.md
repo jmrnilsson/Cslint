@@ -26,7 +26,7 @@ More complex use cases. Use regex to pipe out only errors.
 
 ## Building 
 
-    dotnet publish --framework netcoreapp3.0 --runtime linux-x64 --no-restore -c Release /p:PublishSingleFile=true
+    dotnet publish /p:PublishSingleFile=true --self-contained --no-restore --runtime linux-x64 -c Release
     dotnet publish --framework netcoreapp3.0 --runtime osx.10.11-x64
     dotnet publish --framework netcoreapp3.0 --self-contained --runtime win-x64 -c Release /p:PublishSingleFile=true
 
