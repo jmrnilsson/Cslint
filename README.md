@@ -24,7 +24,13 @@ More complex use cases. Use regex to pipe out only errors.
 	EE      No utf8 BOM: C:\Humany\someproject\src\snark\Startup.cs
 	EE      Matches LF: C:\Humany\someproject\src\snark\ConfigStuffs.cs
 
-## Building 
+## Recommended building
+
+	dotnet restore
+	dotnet publish --framework netcoreapp2.2 --no-restore -c Release
+	dotnet bin\Release\netcoreapp2.2\publish\Cslint.dll
+
+## Alternate build procedure 
 
     dotnet publish --framework netcoreapp3.0 --runtime linux-x64
     dotnet publish --framework netcoreapp3.0 --runtime osx.10.11-x64

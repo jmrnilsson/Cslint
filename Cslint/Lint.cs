@@ -30,7 +30,7 @@ namespace Cslint
 					continue;
 				}
 
-				lf.Check(file);
+				// lf.Check(file);
 				utf8.Check(file);
 			}
 		}
