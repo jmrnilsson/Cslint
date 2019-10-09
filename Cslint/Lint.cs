@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
@@ -30,8 +30,9 @@ namespace Cslint
 					continue;
 				}
 
-				// lf.Check(file);
-				utf8.Check(file);
+				var fi = new FileInfo(file);
+				lf.Check(fi);
+				utf8.Check(fi);
 			}
 		}
 

@@ -1,4 +1,4 @@
-﻿using System.IO;
+using System.IO;
 
 namespace Cslint
 {
@@ -8,6 +8,6 @@ namespace Cslint
 		event ApplicationInformation Information;
 		event ApplicationInformation Verbose;
 
-		void Check(string path);
+		void Check(FileInfo path);
 	}
 }

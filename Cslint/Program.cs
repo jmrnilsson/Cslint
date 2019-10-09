@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -45,15 +45,22 @@ namespace Cslint
 				{
 					lint.Check(workingDirectory);
 				}
-
-				if (args.Contains("poop") && errors.Any())
-				{
-					Environment.Exit(22);
-				}
 			}
 			catch (Exception e)
 			{
-				Console.WriteLine("ERROR: " + e);
+				Error(e.ToString());
+			}
+
+			if (errors.Any())
+			{
+				Console.WriteLine();
+
+				foreach(string err in errors)
+				{
+					Console.Error.WriteLine(err);
+				}
+
+				Environment.Exit(999);
 			}
 
 			Console.WriteLine("Done!");
@@ -61,13 +68,15 @@ namespace Cslint
 
 		private static void WriteLine(string applicationInformation)
 		{
-			Console.WriteLine(applicationInformation);
+			Console.Write(".");
+			// Console.WriteLine(applicationInformation);
 		}
 
 		private static void Error(string applicationError)
 		{
-			TextWriter errorWriter = Console.Error;
-			errorWriter.WriteLine(applicationError);
+			//TextWriter errorWriter = Console.Error;
+			//errorWriter.WriteLine(applicationError);
+			Console.Write(".");
 			errors.Add(applicationError);
 		}
 	}

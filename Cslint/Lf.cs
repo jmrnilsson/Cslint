@@ -1,13 +1,13 @@
-﻿using System.IO;
+using System.IO;
 using System.Text.RegularExpressions;
 
 namespace Cslint
 {
 	class Lf : CheckerBase, IChecker
 	{
-		public void Check(string path)
+		public void Check(FileInfo file)
 		{
-			string fileName = path.Replace("/", "\\");
+			string fileName = file.FullName;
 			string content = File.ReadAllText(fileName);
 			content = Regex.Replace(content, "\r\n", "_");
 
