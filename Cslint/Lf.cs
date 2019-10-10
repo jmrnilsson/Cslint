@@ -13,11 +13,11 @@ namespace Cslint
 
 			if (Regex.IsMatch(content, "\n", RegexOptions.Multiline))
 			{
-				OnError($"EE\tMatches LF: {fileName}");
+				OnError($"Matches LF: {fileName}");
 			}
 			else
 			{
-				OnInformation($"||\tMatches CRLF: {fileName}");
+				OnInformation($"Matches CRLF: {fileName}");
 			}
 		}
 

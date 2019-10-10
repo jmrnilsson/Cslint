@@ -26,7 +26,7 @@ namespace Cslint
 			{
 				if (Regex.Match(file, @"(AssemblyInfo.cs$|\\bin\\|\\obj\\)").Success)
 				{
-					OnInformation($"||\tSkipping: {file}");
+					OnInformation($"Skipping: {file}");
 					continue;
 				}
 

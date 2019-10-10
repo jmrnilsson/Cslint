@@ -22,11 +22,11 @@ namespace Cslint
 			byte[] preamble = enc.GetPreamble();
 			if (preamble.Where((p, i) => p != bytes[i]).Any())
 			{
-				OnError($"EE\tNo UTF8 BOM: {csFile}");
+				OnError($"No UTF8-BOM: {csFile}");
 			}
 			else
 			{
-				OnInformation($"||\tUTF8 BOM OK: {csFile}");
+				OnInformation($"UTF8-BOM found: {csFile}");
 			}
 		}
 
