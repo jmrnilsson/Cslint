@@ -48,7 +48,7 @@ namespace Cslint
 			}
 			catch (Exception e)
 			{
-				Error(e.ToString());
+				ApplicationError(e.ToString());
 			}
 
 			if (errors.Any())
@@ -56,8 +56,10 @@ namespace Cslint
 				Console.WriteLine();
 
 				var sb = new StringBuilder();
+
 				foreach(string err in errors)
 				{
+					// Console.Error.WriteLine(err);
 					sb.AppendLine(err);
 				}
 
@@ -72,8 +74,14 @@ namespace Cslint
 		private static void ConsoleWrite(string kind, string message, Action continueWith)
 		{
 			var errors = message.Split(": ", StringSplitOptions.None);
-			var args = new object[] { kind.PadRight(15, ' '), errors[0].PadRight(20, ' '), errors[1] };
+			var args = new object[]
+			{
+				kind.PadRight(15, ' '),
+				(errors.ElementAtOrDefault(0) ?? "").PadRight(20, ' '),
+				errors.ElementAtOrDefault(1) ?? ""
+			};
 			Console.WriteLine("{0}{1}{2}", args);
+			continueWith();
 		}
 
 		private static void Info(string info)
@@ -90,7 +98,13 @@ namespace Cslint
 		private static void Error(string error)
 		{
 			Console.Write("E");
+			errors.Add(error);
 			// ConsoleWrite("Error:", error, () => errors.Add(error));
+		}
+
+		private static void ApplicationError(string error)
+		{
+			Console.Error.Write("Error: {0}", error);
 		}
 	}
 }

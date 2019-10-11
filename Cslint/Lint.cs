@@ -31,6 +31,7 @@ namespace Cslint
 				}
 
 				var fi = new FileInfo(file);
+				OnVerbose(fi.FullName);
 				lf.Check(fi);
 				utf8.Check(fi);
 			}

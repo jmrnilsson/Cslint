@@ -20,7 +20,7 @@ namespace Cslint
 			byte[] bytes = File.ReadAllBytes(csFile);
 			UTF8Encoding enc = new UTF8Encoding(true);
 			byte[] preamble = enc.GetPreamble();
-			if (preamble.Where((p, i) => p != bytes[i]).Any())
+			if (preamble.Where((p, i) => bytes.Length > i && p != bytes[i]).Any())
 			{
 				OnError($"No UTF8-BOM: {csFile}");
 			}
